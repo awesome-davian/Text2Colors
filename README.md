@@ -19,8 +19,10 @@ Wonwoong Cho*<sup>1</sup>, Hyojin Bahng*<sup>1</sup>, David K. Park*<sup>1</sup>
 ### Text-to-Palette Generation Networks (TPN) and Palette-Based Colorization Networks (PCN)
 <p align="center"><img width="100%" src="PNG/model1.PNG" /></p>
 Overview of our Text2Colors architecture. During training, generator <b>G<sub>0</sub></b> learns to produce a color palette (<b>y hat</b>) given a set of conditional variables (<b>c hat</b>) processed from input text. Generator <b>G<sub>1</sub></b> learns to predict a colorized output of a grayscale image (<b>L</b>) given a palette (<b>p</b>) extracted from the ground truth image. At test time, the trained generators <b>G<sub>0</sub></b> and <b>G<sub>1</sub></b> are used to produce a color palette from given text, and then colorize a grayscale image reflecting the generated palette.
+&nbsp;
 <p align="center"><img width="100%" src="PNG/model2.PNG" /></p>
-
+The model architecture of a generator G0 that produces the t-th color in the palette given an input text <b>x</b> = {x<sub>1</sub>;    ; x<sub>T</sub>}. Note that randomness is added to each
+hidden state vector h in the sequence before it is passed to the generator
 &nbsp;
 
 ## Palette-and-Text (PAT) dataset
