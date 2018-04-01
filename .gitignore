@@ -1,0 +1,14 @@
+/*
+/*/
+
+!.gitignore
+!train_text2pal.py
+!/text2pal_newCA2/
+!/pal2color/
+!train_bird256.py
+
+/*/logs
+/*/models
+/*/__pycache__
+/*/.DS_Store
+/*/preprocess*
