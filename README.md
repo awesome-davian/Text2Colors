@@ -24,9 +24,9 @@ Overview of our Text2Colors architecture. During training, generator <b>G<sub>0<
 <p align="center"><img width="100%" src="PNG/model2.PNG" /></p>
 
 
-The model architecture of a generator G0 that produces the t-th color in the palette given an input text <b>x</b> = {x<sub>1</sub>, ···,  x<sub>T</sub>}. Note that randomness is added to each hidden state vector h in the sequence before it is passed to the generator
+The model architecture of a generator <b>G<sub>0</sub></b> that produces the t-th color in the palette given an input text <b>x</b> = {x<sub>1</sub>, ···,  x<sub>T</sub>}. Note that randomness is added to each hidden state vector h in the sequence before it is passed to the generator
 &nbsp;
-&nbsp;
+
 
 ## Palette-and-Text (PAT) dataset
 
