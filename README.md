@@ -11,10 +11,7 @@ This repository provides a PyTorch implementation of [Text2Colors](아카이브�
 [Text2Colors: Guiding Image Colorization through Text-Driven Palette Generation](아카이브주소) <br/>
 Wonwoong Cho*<sup>1</sup>, Hyojin Bahng*<sup>1</sup>, David K. Park*<sup>1</sup>, Seungjoo Yoo*<sup>1</sup>, Ziming Wu<sup>2</sup>, Xiaojuan Ma<sup>2</sup>, and Jaegul Choo<sup>1</sup>
 
-<sup>1</sup>Korea University\ \ tyflehd21,hjj552,heykeetae,seungjooyoo,jchoo@korea.ac.kr
-
-<sup>2</sup>Hong Kong University of Science and Technology\ \ zwual@connect.ust.hk, mxj@cse.ust.hk
-
+<sup>1</sup>Korea University   <sup>2</sup>Hong Kong University of Science and Technology
 *These authors contributed equally and are presented in random order.
 
 &nbsp;
