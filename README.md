@@ -62,7 +62,7 @@ $ bash download.sh
 ##### (ii) RaFD dataset
 Because <b>RaFD</b> is not a public dataset, you must first request access to the dataset from [the Radboud Faces Database website](http://www.socsci.ru.nl:8180/RaFD2/RaFD?p=main). Then, you need to create the folder structure as decribed [here.](https://github.com/yunjey/StarGAN/blob/master/png/RaFD.md)
 
-#### 3. Train StarGAN
+#### 3. Train 
 ##### (i) Training with CelebA
 
 ```bash
@@ -87,7 +87,7 @@ $ python main.py --mode='train' --dataset='Both' --image_size=256 --num_iters=20
                  --model_save_path='stargan_both/models' --result_path='stargan_both/results'
 ```
 
-#### 4. Test StarGAN
+#### 4. Test 
 ##### (i) Facial attribute transfer on CelebA
 ```bash
 $ python main.py --mode='test' --dataset='CelebA' --c_dim=5 --image_size=128 --test_model='20_1000' \
