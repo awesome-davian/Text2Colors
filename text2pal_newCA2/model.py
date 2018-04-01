@@ -110,7 +110,7 @@ class Attn(nn.Module):
 
         self.hidden_size = hidden_size
         self.softmax = nn.Softmax(dim=0)
-        # self.attn_e = nn.Linear(self.hidden_size, self.hidden_size)
+        self.attn_e = nn.Linear(self.hidden_size, self.hidden_size)
         self.attn_h = nn.Linear(self.hidden_size, self.hidden_size)
         # self.non_linear = nn.LeakyReLU()
         # self.non_linear = nn.Sigmoid()
@@ -144,7 +144,7 @@ class Attn(nn.Module):
 
     def score(self, hidden, encoder_output): # hidden : B x 150, encoder_output[i] : B x 150
 
-        # encoder_ = self.attn_e(encoder_output)
+        encoder_ = self.attn_e(encoder_output)
         # A / ||A||
         encoder_ = encoder_ / (torch.sum((encoder_ ** 2), 1) ** 0.5).unsqueeze(1)
         encoder_ = encoder_output.unsqueeze(2)
