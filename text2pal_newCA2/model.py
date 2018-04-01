@@ -146,12 +146,12 @@ class Attn(nn.Module):
 
         # encoder_ = self.attn_e(encoder_output)
         # A / ||A||
-        # encoder_ = encoder_ / (torch.sum((encoder_ ** 2), 1) ** 0.5).unsqueeze(1)
+        encoder_ = encoder_ / (torch.sum((encoder_ ** 2), 1) ** 0.5).unsqueeze(1)
         encoder_ = encoder_output.unsqueeze(2)
 
         hidden_ = self.attn_h(hidden)
         # B / ||B||
-        # hidden_ = hidden_ / (torch.sum((hidden_ ** 2), 1) ** 0.5).unsqueeze(1)
+        hidden_ = hidden_ / (torch.sum((hidden_ ** 2), 1) ** 0.5).unsqueeze(1)
         hidden_ = hidden_.unsqueeze(1)
 
         energy = torch.bmm(hidden_, encoder_)
