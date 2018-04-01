@@ -6,7 +6,7 @@
 !/text2pal_newCA2/
 !/pal2color/
 !train_bird256.py
-
+!install_pre.sh
 /*/logs
 /*/models
 /*/__pycache__
