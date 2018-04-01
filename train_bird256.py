@@ -17,10 +17,9 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--data', type=str, default='bird256', choices=['cifar', 'imagenet', 'tiny_imagenet', 'bird256',
                                                                     'celeba', 'mscoco', 'bird', 'flower', 'temp'])
-    parser.add_argument('--gpu', type=int, default=2)
+    parser.add_argument('--gpu', type=int, default=0)
     parser.add_argument('--model_path', type=str, default='./pal2color/models/')
     parser.add_argument('--log_path', type=str, default='./pal2color/logs')
-    parser.add_argument('--model', type=str, default='unet100.pkl')
     parser.add_argument('--image_save', type=str, default='./pal2color/images')
     parser.add_argument('--learning_rate', type=int, default=0.0002)
     parser.add_argument('--num_epochs', type=int, default=100)
