@@ -10,7 +10,6 @@ from pal2color.model import *
 from pal2color.util import *
 from pal2color.global_hint import *
 from pal2color.data_loader import *
-from pal2color.gan import *
 
 def parse_args():
     parser = argparse.ArgumentParser()
