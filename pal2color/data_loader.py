@@ -64,7 +64,7 @@ class LoadImagenet(data.Dataset):
 
 def Color_Dataloader(dataset, batch_size, idx=0):
 
-    elif dataset == 'imagenet':
+    if dataset == 'imagenet':
 
         traindir = './data/imagenet/train_palette_set_origin/train_images_%d.txt' % (idx)
         pal_traindir = './data/imagenet/train_palette_set_origin/train_palette_%d.txt' % (idx)
