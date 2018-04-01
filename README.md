@@ -6,16 +6,19 @@ This repository provides a PyTorch implementation of [Text2Colors](아카이브�
 <p align="center"><img width="100%" src="PNG/main.PNG" /></p>
 
 
+
 ## Paper
 [Text2Colors: Guiding Image Colorization through Text-Driven Palette Generation](아카이브주소) <br/>
 Wonwoong Cho*, Hyojin Bahng*, David Keetae Park*, Seungjoo Yoo*, Ziming Wu, Xiaojuan Ma and Jaegul Choo <br/>
 *These authors contributed equally and are presented in random order.
 
 
+
 ## Model Description
 ### Text-to-Palette Generation Networks (TPN) and Palette-Based Colorization Networks (PCN)
 <p align="center"><img width="100%" src="PNG/model1.PNG" /></p>
 <p align="center"><img width="100%" src="PNG/model2.PNG" /></p>
+
 
 
 ## Palette-and-Text (PAT) dataset
