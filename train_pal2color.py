@@ -64,13 +64,14 @@ def main(args):
 
     tell_time = Timer()
     iter = 0
+    gm = GanModel()
 
     for epoch in range(start_epoch, num_epochs):
 
         G.train()
         for i, (images, pals) in enumerate(train_loader):
 
-            (_, _, loss, sL1_loss) = train(images, pals, G, D, G_optimizer, D_optimizer,
+            (_, _, loss, sL1_loss) = train(gm, images, pals, G, D, G_optimizer, D_optimizer,
                                             criterion_bce, criterion_sL1, always_give_global_hint, 
                                             add_L, gan_loss, True)
 
