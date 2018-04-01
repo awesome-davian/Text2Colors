@@ -66,13 +66,14 @@ $ bash install_pre.sh
 ```
 
 #### 3. Train 
-##### (i) Training text2pal model with PAT data
+##### (i) Training Text-to-Palette Generation Networks (TPN) with PAT data
 
 ```bash
 $ python train_text2pal.py
 ```
 
-##### (ii) Training pal2color model with CUB data
+##### (ii) Training Palette-Based Colorization Networks (PCN) with CUB-200-2011* data
+*Wah, Catherine, et al. "The caltech-ucsd birds-200-2011 dataset." (2011).
 
 ```bash
 $ python train_pal2color.py
