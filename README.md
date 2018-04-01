@@ -73,11 +73,11 @@ $ python train_text2pal.py
 ```
 
 ##### (ii) Training Palette-Based Colorization Networks (PCN) with CUB-200-2011* data
-*Wah, Catherine, et al. "The caltech-ucsd birds-200-2011 dataset." (2011).
 
 ```bash
 $ python train_pal2color.py
 ```
+*Wah, Catherine, et al. "The caltech-ucsd birds-200-2011 dataset." (2011).
 
 ## Citation
 If this work is useful for your research, please cite our [paper](아카이브주소).
