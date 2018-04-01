@@ -38,7 +38,7 @@ Statistics and samples of PAT dataset: (a) the number of data items with respect
 
 **For the use of PAT dataset for your research, please cite our [paper](아카이브주소).**
 ```
-아카이브레퍼런스
+ (bibtex)
 ```
 &nbsp;
 
