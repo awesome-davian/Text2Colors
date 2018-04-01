@@ -25,7 +25,7 @@ parser.add_argument('--lambda_KL', type=float, default=0.5, help='weight for KL 
 parser.add_argument('--log_interval',  type=int, default=1,   help='how many steps to wait before logging training status [default: 1]')
 parser.add_argument('--test_interval', type=int, default=100, help='how many steps to wait before testing [default: 100]')
 parser.add_argument('--save_interval', type=int, default=100, help='how many steps to wait before saving [default:500]')
-parser.add_argument('--save_dir', type=str, default='./text2pal_newCA2/models', help='where to save the trained models')
+parser.add_argument('--save_dir', type=str, default='./text2pal/models', help='where to save the trained models')
 
 parser.add_argument('--loss_combination', type=str, default='att_test_')
 parser.add_argument('--gpu', type=int, default=0)
