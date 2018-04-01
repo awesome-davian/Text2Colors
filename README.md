@@ -27,9 +27,9 @@ We open our manually curated dataset named Palette-and-Text(PAT). PAT contains 1
 <p align="center"><img width="100%" src="PNG/pat.PNG" /></p>
 (a) the number of data items with respect to their text lengths. On the right are examples that show diverse textpalette pairs in PAT. Those text descriptions matching with their palettes include (b) direct color names, (c) texts with a relatively low level of semantic relations to colors, (d) those with a high-level semantic context. 
 
-#**For the use of PAT dataset for your research, please cite our [paper](아카이브주소).**
+<p>**For the use of PAT dataset for your research, please cite our [paper](아카이브주소).**
 ```
 아카이브레퍼런스
 ```
-
+</p>
 
