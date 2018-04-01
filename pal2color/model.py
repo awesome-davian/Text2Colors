@@ -22,7 +22,6 @@ class UNetConvBlock1_2(nn.Module):
         self.activation = activation
         self.batchnorm = nn.BatchNorm2d(out_size)
         self.conv3 = nn.Conv2d(out_size, out_size, 1, stride=2, groups=out_size, bias=False)
-        #self.conv3.weight.data.fill_(1)
 
     def forward(self, x):
         out = self.activation(x)
@@ -52,7 +51,6 @@ class UNetConvBlock2(nn.Module):
         self.activation = activation
         self.batchnorm = nn.BatchNorm2d(out_size)
         self.conv3 = nn.Conv2d(out_size, out_size, 1, stride=2, groups=out_size, bias=False)
-        #self.conv3.weight.data.fill_(1)
 
     def forward(self, x):
         out = self.activation(self.conv(x))
@@ -84,7 +82,6 @@ class UNetConvBlock3(nn.Module):
         self.activation = activation
         self.batchnorm = nn.BatchNorm2d(out_size)
         self.conv4 = nn.Conv2d(out_size, out_size, 1, stride=2, groups=out_size, bias=False)
-        #self.conv4.weight.data.fill_(1)
 
     def forward(self, x):
         out = self.activation(self.conv(x))
@@ -179,16 +176,12 @@ class UNetConvBlock8(nn.Module):
         super(UNetConvBlock8, self).__init__()
         self.up = nn.ConvTranspose2d(in_size, out_size, 4, stride=2, padding=1, dilation=1)
         self.bridge = nn.Conv2d(256, 256, kernel_size, padding=1)
-        #self.bridge.weight.data.normal_(0, 0.01)
-        #self.bridge.bias.data.fill_(1)
+
         self.conv = nn.Conv2d(out_size, out_size, kernel_size, padding=1, dilation=1)
         self.conv2 = nn.Conv2d(out_size, out_size, kernel_size, padding=1, dilation=1)
         self.activation = activation
         self.batchnorm = nn.BatchNorm2d(out_size)
-    # def center_crop(self, layer, target_size):
-    #     batch_size, n_channels, layer_width, layer_height = layer.size()
-    #     xy1 = (layer_width - target_size) // 2
-    #     return layer[:, :, xy1:(xy1 + target_size), xy1:(xy1 + target_size)]
+
     def forward(self, x, bridge):
         up = self.up(x)
         out = self.activation(self.bridge(bridge) + up)
@@ -201,14 +194,8 @@ class UNetConvBlock9(nn.Module):
     def __init__(self, in_size, out_size, kernel_size=3, activation=F.relu, space_dropout=False):
         super(UNetConvBlock9, self).__init__()
         self.up = nn.ConvTranspose2d(in_size, out_size, 4, stride=2, padding=1, dilation=1)
-        #self.up.weight.data.normal_(0, 0.01)
-        #self.up.bias.data.fill_(1)
         self.bridge = nn.Conv2d(128, 128, kernel_size, padding=1)
-        #self.bridge.weight.data.normal_(0, 0.01)
-        #self.bridge.bias.data.fill_(1)
         self.conv = nn.Conv2d(out_size, out_size, kernel_size, padding=1, dilation=1)
-        #self.conv.weight.data.normal_(0, 0.01)
-        #self.conv.bias.data.fill_(1)
         self.activation = activation
         self.batchnorm = nn.BatchNorm2d(out_size)
 
@@ -224,14 +211,8 @@ class UNetConvBlock10(nn.Module):
     def __init__(self, in_size, out_size, kernel_size=3, activation=F.relu, space_dropout=False):
         super(UNetConvBlock10, self).__init__()
         self.up = nn.ConvTranspose2d(in_size, out_size, 4, stride=2, padding=1, dilation=1)
-        #self.up.weight.data.normal_(0, 0.01)
-        #self.up.bias.data.fill_(1)
         self.bridge = nn.Conv2d(64, 128, kernel_size, padding=1)
-        #self.bridge.weight.data.normal_(0, 0.01)
-        #self.bridge.bias.data.fill_(1)
         self.conv = nn.Conv2d(out_size, out_size, kernel_size, padding=1, dilation=1)
-        #self.conv.weight.data.normal_(0, 0.01)
-        #self.conv.bias.data.fill_(1)
         self.activation = activation
         self.activation2 = nn.LeakyReLU(negative_slope=0.02)
 
@@ -274,10 +255,9 @@ class global_network(nn.Module):
         self.fourD = convrelu(512, 512)
         self.image_size = image_size
 
-    def forward(self, x, dim):   # 4 conv+relu layers with 1 x 1 kernel size with 512 depth,
-        # if dim >= 128:
+    def forward(self, x, dim):
         n = 2
-        out = self.oneD(x)  # made into h/8 x w/8 x 512 # input: 1 x 1 x 313+3 dimension tensor
+        out = self.oneD(x)
         
         if dim >= 256:
             n = 4
@@ -285,7 +265,7 @@ class global_network(nn.Module):
         if dim == 512:
             n = 8
             out = self.threeD(out)
-            out = self.fourD(out) # batch x 1 x 1 x 512
+            out = self.fourD(out)
 
         out = out.repeat(1,1, int(self.image_size/n), int(self.image_size/n))
         return out
@@ -310,16 +290,14 @@ class UNet(nn.Module):
         self.convlayer3 = UNetConvBlock3(128, 256)
         self.convlayer3_2 = UNetConvBlock3_2(128, 256)
         self.convlayer4 = UNetConvBlock4(256, 512)
-        self.convlayer5 = UNetConvBlock5(512, 512) # Dilated Convolution
-        self.convlayer6 = UNetConvBlock6(512, 512) # Dilated Convolution
+        self.convlayer5 = UNetConvBlock5(512, 512)
+        self.convlayer6 = UNetConvBlock6(512, 512)
         self.convlayer7 = UNetConvBlock7(512, 512)
         self.convlayer8 = UNetConvBlock8(512, 256)
         self.convlayer9 = UNetConvBlock9(256, 128)
         self.convlayer10 = UNetConvBlock10(128, 128)
 
         self.prediction = prediction(128, 2)
-
-        #self.last = nn.Conv2d(128, 2, 1)
 
     def forward(self, x, side_input):
         layer1_1 = self.convlayer1_1(x)
@@ -355,14 +333,14 @@ class UNet(nn.Module):
 
 
 class Discriminator(nn.Module):
-    """Discriminator. PatchGAN."""
+
     def __init__(self, add_L, imsize, conv_dim=64, repeat_num=5):
         super(Discriminator, self).__init__()
 
         input_dim = 2 + 10
         if add_L:
             input_dim = 3 + 15
-        # repeat_num = int(imsize / 128) + repeat_num # if 64 => 5, 256 => 7
+
         layers = []
         layers.append(nn.Conv2d(input_dim, conv_dim, kernel_size=4, stride=2, padding=1))
         layers.append(nn.LeakyReLU(0.01, inplace=True))
@@ -380,9 +358,6 @@ class Discriminator(nn.Module):
         self.fc = nn.Sequential(
             nn.BatchNorm1d(k_size*k_size*curr_dim),
             nn.Linear(k_size*k_size*curr_dim, 1),
-            # nn.BatchNorm1d(1024),
-            # nn.LeakyReLU(0.01, inplace=True),
-            # nn.Linear(1024, 1),
             nn.Sigmoid(),
         )
 
@@ -402,8 +377,6 @@ def init_models(batch_size, imsize, dropout_ep, learning_rate, multi_injection,
     print('# parameters of Generator : ',num_param(G))
     D = Discriminator(add_L, imsize).cuda()
     print('# parameters of Discriminator : ',num_param(D))
-    # nn.DataParallel(G, device_ids=[0,1])
-    # nn.DataParallel(D, device_ids=[0,1])
     G_optimizer = optim.Adam(G.parameters(), lr=learning_rate, weight_decay=weight_decay)
     D_optimizer = optim.Adam(D.parameters(), lr=learning_rate, weight_decay=weight_decay)
 

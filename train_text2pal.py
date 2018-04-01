@@ -3,16 +3,16 @@ import os, argparse
 import torch
 from torch import cuda
 
-from text2pal_newCA2.model import *
-from text2pal_newCA2.data_loader import get_loader
-from text2pal_newCA2.train import *
-from text2pal_newCA2.embedding import *
+from text2pal.model import *
+from text2pal.data_loader import get_loader
+from text2pal.train import *
+from text2pal.embedding import *
 
 parser = argparse.ArgumentParser(description='Interactive Colorization through Text')
-# Model
+
 parser.add_argument('--hidden_size', type=int, default=150)
 parser.add_argument('--n_layers', type=int, default=4)
-# Training
+
 parser.add_argument('--lr', type=float, default=5e-4, help='initial learning rate')
 parser.add_argument('--epochs', type=int, default=500, help='number of epochs for train')
 parser.add_argument('--batch_size', type=int, default=32, help='batch size for training')
@@ -26,7 +26,7 @@ parser.add_argument('--log_interval',  type=int, default=1,   help='how many ste
 parser.add_argument('--test_interval', type=int, default=100, help='how many steps to wait before testing [default: 100]')
 parser.add_argument('--save_interval', type=int, default=100, help='how many steps to wait before saving [default:500]')
 parser.add_argument('--save_dir', type=str, default='./text2pal_newCA2/models', help='where to save the trained models')
-# Option
+
 parser.add_argument('--loss_combination', type=str, default='att_test_')
 parser.add_argument('--gpu', type=int, default=0)
 parser.add_argument('--model', type=str, default='cnn_1_100.pkl')
@@ -39,11 +39,9 @@ try:
 except OSError:
     pass
 
-# Set device.
 cuda.set_device(args.gpu)
 print("Running on GPU : ", args.gpu)
 
-# Load GloVe embedding data.
 input_dict = prepare_data()
 emb_file = os.path.join('./data', 'Color-Hex-vf.pth')
 
@@ -58,17 +56,14 @@ else:
 
 W_emb = W_emb.cuda()
 
-# Generator and Discriminator.
 encoder = EncoderRNN(input_dict.n_words, args.hidden_size,
                      args.n_layers, args.dropout_p, W_emb).cuda()
 decoder = AttnDecoderRNN(args.hidden_size, input_dict,
                          args.n_layers, args.dropout_p).cuda()
 discriminator = Discriminator(15, args.hidden_size).cuda()
 
-# Data loader.
 train_loader, val_loader = get_loader(args.batch_size, input_dict)
 
-# Begin Training.
 print("Begin training...")
 try:
     TrainGAN(train_loader, val_loader, encoder, decoder, discriminator, args).train()

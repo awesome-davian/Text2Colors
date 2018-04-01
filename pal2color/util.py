@@ -7,8 +7,6 @@ import warnings
 from skimage.color import rgb2lab, lab2rgb, rgb2gray
 
 def check_value(inds, val):
-    # Check to see if an array is a single element equaling a particular value
-    # Good for pre-processing inputs in a function
     if (np.array(inds).size == 1):
         if (inds == val):
             return True
@@ -16,15 +14,10 @@ def check_value(inds, val):
 
 
 def flatten_nd_array(pts_nd, axis=1):
-    # Flatten an nd array into a 2d array with a certain axis
-    # INPUTS
-    # 	pts_nd 		N0xN1x...xNd array
-    # 	axis 		integer
-    # OUTPUTS
-    # 	pts_flt 	prod(N \ N_axis) x N_axis array
+
     NDIM = pts_nd.ndim
     SHP = np.array(pts_nd.shape)
-    nax = np.setdiff1d(np.arange(0, NDIM), np.array((axis)))  # non axis indices
+    nax = np.setdiff1d(np.arange(0, NDIM), np.array((axis)))
     NPTS = np.prod(SHP[nax])
     axorder = np.concatenate((nax, np.array(axis).flatten()), axis=0)
     pts_flt = pts_nd.transpose((axorder))
@@ -33,17 +26,10 @@ def flatten_nd_array(pts_nd, axis=1):
 
 
 def unflatten_2d_array(pts_flt, pts_nd, axis=1, squeeze=False):
-    # Unflatten a 2d array with a certain axis
-    # INPUTS
-    # 	pts_flt 	prod(N \ N_axis) x M array
-    # 	pts_nd 		N0xN1x...xNd array
-    # 	axis 		integer
-    # 	squeeze 	bool 	if true, M=1, squeeze it out
-    # OUTPUTS
-    # 	pts_out 	N0xN1x...xNd array
+
     NDIM = pts_nd.ndim
     SHP = np.array(pts_nd.shape)
-    nax = np.setdiff1d(np.arange(0, NDIM), np.array((axis)))  # non axis indices
+    nax = np.setdiff1d(np.arange(0, NDIM), np.array((axis)))
     NPTS = np.prod(SHP[nax])
 
     if (squeeze):
