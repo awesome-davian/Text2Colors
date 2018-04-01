@@ -75,7 +75,7 @@ class TrainGAN(object):
                 for i in range(5):
                     palette, decoder_context, decoder_hidden, _ = self.decoder(palette, decoder_context,
                                                                                decoder_hidden, encoder_outputs,
-                                                                               each_input_size, signal)
+                                                                               each_input_size)
                     fake_palettes[:, 3 * i:3 * (i + 1)] = palette
                     palette = palette.unsqueeze(0)
 

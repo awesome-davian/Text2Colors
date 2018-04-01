@@ -76,22 +76,17 @@ class AttnDecoderRNN(nn.Module):
 
         self.out = nn.Sequential(
                         nn.Linear(hidden_size * 2, hidden_size),
-                        # nn.Linear(hidden_size, hidden_size),
                         nn.ReLU(inplace=True),
                         nn.BatchNorm1d(hidden_size),
                         nn.Linear(hidden_size,self.palette_dim)
                    )
 
-    def forward(self, palette, last_context, last_hidden, encoder_outputs, each_input_size, signal):
+    def forward(self, palette, last_context, last_hidden, encoder_outputs, each_input_size):
         rnn_input = torch.cat((palette, last_context), 2) # palette: 1 x B x 3, last_context: 1 x B x 150
         
         rnn_output, hidden = self.gru(rnn_input, last_hidden) # rnn_output: 1 x B x 150, hidden: 4 x B x 150
 
         attn_weights = self.attn(rnn_output.squeeze(0), encoder_outputs, each_input_size) # rnn_output: 1 x B x 150 , encoder_outputs: N x B x 150
-        
-        # if signal:
-        #     rand = randint(0,1)
-        #     attn_weights = Variable(torch.zeros(attn_weights.size())).cuda()
 
         context = torch.bmm(attn_weights, encoder_outputs.transpose(0,1)) # (B x 1 x N) x (B x N x 150)
 
@@ -99,7 +94,7 @@ class AttnDecoderRNN(nn.Module):
         context = context.squeeze(1)       # B x 1 x 150 -> B x 150
 
         output = self.out(torch.cat((rnn_output, context), 1)) # B x 3
-        # output = self.out(rnn_output) # B x 3
+
         # Return final output, hidden state, and attention weights (for visualization, B x 1 x N)
         return output, context.unsqueeze(0), hidden, attn_weights
 
@@ -112,8 +107,6 @@ class Attn(nn.Module):
         self.softmax = nn.Softmax(dim=0)
         self.attn_e = nn.Linear(self.hidden_size, self.hidden_size)
         self.attn_h = nn.Linear(self.hidden_size, self.hidden_size)
-        # self.non_linear = nn.LeakyReLU()
-        # self.non_linear = nn.Sigmoid()
 
     def forward(self, hidden, encoder_outputs, each_size): # hidden: B x 150, encoder_outputs: N x B x 150
 
@@ -128,18 +121,14 @@ class Attn(nn.Module):
         
         # -Inf
         for i in range(batch_size):
-            
+
             try:
                 attn_energies[each_size[i]:,i] = -float('Inf')
-                # print(attn_energies[:each_size[i],i])
             except:
                 pass # In case of the longest text
 
         attn_energies = self.softmax(attn_energies)
-
-        # mask
-        # attn_energies = mask(attn_energies, each_size, seq_len, batch_size)
-        
+ 
         return attn_energies.permute(1,2,0) # Normalize energies to weights in range 0 to 1, resize to batch x 1 x N
 
     def score(self, hidden, encoder_output): # hidden : B x 150, encoder_output[i] : B x 150
@@ -156,9 +145,6 @@ class Attn(nn.Module):
 
         energy = torch.bmm(hidden_, encoder_)
 
-        # energy = self.attn(torch.cat((hidden, encoder_output), 1)) # energy : B x 150
-        # energy = torch.mm(energy,self.other) # (B x 150) X (150 x 1) = B x 1
-        
         return energy.squeeze(2)
 
 class Discriminator(nn.Module):
