@@ -53,64 +53,23 @@ $ git clone https://github.com/awesome-davian/Text2Colors.git
 $ cd Text2Colors/
 ```
 
-#### 2. Dataset
-##### (i) unzip the Palette-and-Text (PAT) dataset
+#### 2. Dataset & Libraries install
 ```bash
-$ bash download.sh
+$ bash install_pre.sh
 ```
-
-##### (ii) RaFD dataset
-Because <b>RaFD</b> is not a public dataset, you must first request access to the dataset from [the Radboud Faces Database website](http://www.socsci.ru.nl:8180/RaFD2/RaFD?p=main). Then, you need to create the folder structure as decribed [here.](https://github.com/yunjey/StarGAN/blob/master/png/RaFD.md)
 
 #### 3. Train 
-##### (i) Training with CelebA
+##### (i) Training text2pal model with PAT data
 
 ```bash
-$ python main.py --mode='train' --dataset='CelebA' --c_dim=5 --image_size=128 \
-                 --sample_path='stargan_celebA/samples' --log_path='stargan_celebA/logs' \
-                 --model_save_path='stargan_celebA/models' --result_path='stargan_celebA/results'
+$ python train_text2pal.py
 ```
-##### (ii) Training with RaFD
+
+##### (ii) Training pal2color model with CUB data
 
 ```bash
-$ python main.py --mode='train' --dataset='RaFD' --c_dim=8 --image_size=128 \
-                 --num_epochs=200 --num_epochs_decay=100 --sample_step=200 --model_save_step=200 \
-                 --sample_path='stargan_rafd/samples' --log_path='stargan_rafd/logs' \
-                 --model_save_path='stargan_rafd/models' --result_path='stargan_rafd/results'
+$ python train_pal2color.py
 ```
-
-##### (iii) Training with CelebA+RaFD
-
-```bash
-$ python main.py --mode='train' --dataset='Both' --image_size=256 --num_iters=200000 --num_iters_decay=100000 \
-                 --sample_path='stargan_both/samples' --log_path='stargan_both/logs' \
-                 --model_save_path='stargan_both/models' --result_path='stargan_both/results'
-```
-
-#### 4. Test 
-##### (i) Facial attribute transfer on CelebA
-```bash
-$ python main.py --mode='test' --dataset='CelebA' --c_dim=5 --image_size=128 --test_model='20_1000' \
-                 --sample_path='stargan_celebA/samples' --log_path='stargan_celebA/logs' \
-                 --model_save_path='stargan_celebA/models' --result_path='stargan_celebA/results'
-```
-
-##### (ii) Facial expression synthesis on RaFD
-```bash
-$ python main.py --mode='test' --dataset='RaFD' --c_dim=8 --image_size=128 \
-                 --test_model='200_200' --rafd_image_path='data/RaFD/test' \
-                 --sample_path='stargan_rafd/samples' --log_path='stargan_rafd/logs' \
-                 --model_save_path='stargan_rafd/models' --result_path='stargan_rafd/results'
-```
-
-##### (iii) Facial expression synthesis on CelebA
-```bash
-$ python main.py --mode='test' --dataset='Both' --image_size=256 --test_model='200000' \
-                 --sample_path='stargan_both/samples' --log_path='stargan_both/logs' \
-                 --model_save_path='stargan_both/models' --result_path='stargan_both/results'
-```
-
-&nbsp;
 
 ## Citation
 If this work is useful for your research, please cite our [paper](https://arxiv.org/abs/1711.09020).
@@ -118,10 +77,6 @@ If this work is useful for your research, please cite our [paper](https://arxiv.
  (bibtex)
 ```
 &nbsp;
-
-## Acknowledgement
-This work was mainly done while the first author did a research internship at <b>Clova AI Research, NAVER (CLAIR)</b>. We also thank all the researchers at CLAIR, especially Donghyun Kwak, for insightful discussions.
-
 
 **For the use of PAT dataset for your research, please cite our [paper](아카이브주소).**
 ```
