@@ -12,7 +12,6 @@ def check_value(inds, val):
             return True
     return False
 
-
 def flatten_nd_array(pts_nd, axis=1):
 
     NDIM = pts_nd.ndim
@@ -23,7 +22,6 @@ def flatten_nd_array(pts_nd, axis=1):
     pts_flt = pts_nd.transpose((axorder))
     pts_flt = pts_flt.reshape(NPTS, SHP[axis])
     return pts_flt
-
 
 def unflatten_2d_array(pts_flt, pts_nd, axis=1, squeeze=False):
 
@@ -49,7 +47,6 @@ def unflatten_2d_array(pts_flt, pts_nd, axis=1, squeeze=False):
         pts_out = pts_out.transpose(axorder_rev)
 
     return pts_out
-
 
 def na():
     return np.newaxis
