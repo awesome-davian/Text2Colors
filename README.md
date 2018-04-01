@@ -41,7 +41,7 @@ We open our manually curated dataset named Palette-and-Text(PAT). PAT contains 1
 ## Prerequisites
 * [Python 3.5+](https://www.continuum.io/downloads)
 * [PyTorch 0.3.1](http://pytorch.org/)
-* [Skikit-Image 0.13.1](http://scikit-image.org/)
+* [Scikit-Image 0.13.1](http://scikit-image.org/)
 
 &nbsp;
 
@@ -49,7 +49,7 @@ We open our manually curated dataset named Palette-and-Text(PAT). PAT contains 1
 
 #### 1. Clone the repository
 ```bash
-$ https://github.com/awesome-davian/Text2Colors.git
+$ git clone https://github.com/awesome-davian/Text2Colors.git
 $ cd Text2Colors/
 ```
 
