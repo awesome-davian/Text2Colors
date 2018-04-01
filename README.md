@@ -1,4 +1,4 @@
-<p align="center"><img width="40%" src="PNG/logo2.PNG" /></p>
+<p align="center"><img width="40%" src="PNG/logo3.PNG" /></p>
 
 --------------------------------------------------------------------------------
 This repository provides a PyTorch implementation of [Text2Colors](아카이브주소). Text2Colors is capable of producing plausible colors (or color palette) given variable length of text input, and colorize a grayscale image based on the colors.
