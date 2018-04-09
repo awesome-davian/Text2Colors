@@ -3,7 +3,6 @@ import torch.nn as nn
 from torch.autograd import Variable
 import torch.nn.functional as F
 from random import *
-
 from text2pal.utils import *
 
 
@@ -93,50 +92,40 @@ class AttnDecoderRNN(nn.Module):
 class Attn(nn.Module):
     def __init__(self, hidden_size, max_length):
         super(Attn, self).__init__()
-
         self.hidden_size = hidden_size
         self.softmax = nn.Softmax(dim=0)
         self.attn_e = nn.Linear(self.hidden_size, self.hidden_size)
         self.attn_h = nn.Linear(self.hidden_size, self.hidden_size)
+        self.attn_energy = nn.Linear(self.hidden_size, 1)
+        self.sigmoid = nn.Sigmoid()
 
     def forward(self, hidden, encoder_outputs, each_size):
-
         seq_len = encoder_outputs.size(0)
         batch_size = encoder_outputs.size(1)
-
         attn_energies = Variable(torch.zeros(seq_len,batch_size,1)).cuda()
 
         for i in range(seq_len):
             attn_energies[i] = self.score(hidden, encoder_outputs[i])
 
         for i in range(batch_size):
-
             try:
                 attn_energies[each_size[i]:,i] = -float('Inf')
             except:
                 pass
 
         attn_energies = self.softmax(attn_energies)
- 
         return attn_energies.permute(1,2,0)
 
     def score(self, hidden, encoder_output):
-
         encoder_ = self.attn_e(encoder_output)
-        encoder_ = encoder_ / (torch.sum((encoder_ ** 2), 1) ** 0.5).unsqueeze(1)
-        encoder_ = encoder_output.unsqueeze(2)
-
         hidden_ = self.attn_h(hidden)
-        hidden_ = hidden_ / (torch.sum((hidden_ ** 2), 1) ** 0.5).unsqueeze(1)
-        hidden_ = hidden_.unsqueeze(1)
+        energy = self.attn_energy(self.sigmoid(encoder_+hidden_))
+        return energy
 
-        energy = torch.bmm(hidden_, encoder_)
-        return energy.squeeze(2)
 
 class Discriminator(nn.Module):
     def __init__(self, color_size=15, hidden_dim=150):
         super(Discriminator, self).__init__()
-
         curr_dim = color_size+hidden_dim
 
         layers = []

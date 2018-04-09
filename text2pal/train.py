@@ -31,7 +31,10 @@ class TrainGAN(object):
                                             lr=args.lr, betas=(args.beta1, args.beta2))
 
     def train(self):
-
+        self.encoder.train()
+        self.decoder.train()
+        self.D.train()
+        
         for epoch in range(1, self.args.epochs + 1):
             steps = 0
 

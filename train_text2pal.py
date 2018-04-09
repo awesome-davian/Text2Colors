@@ -12,7 +12,6 @@ parser = argparse.ArgumentParser(description='Interactive Colorization through T
 
 parser.add_argument('--hidden_size', type=int, default=150)
 parser.add_argument('--n_layers', type=int, default=4)
-
 parser.add_argument('--lr', type=float, default=5e-4, help='initial learning rate')
 parser.add_argument('--epochs', type=int, default=500, help='number of epochs for train')
 parser.add_argument('--batch_size', type=int, default=32, help='batch size for training')
@@ -26,10 +25,8 @@ parser.add_argument('--log_interval',  type=int, default=1,   help='how many ste
 parser.add_argument('--test_interval', type=int, default=100, help='how many steps to wait before testing [default: 100]')
 parser.add_argument('--save_interval', type=int, default=100, help='how many steps to wait before saving [default:500]')
 parser.add_argument('--save_dir', type=str, default='./text2pal/models', help='where to save the trained models')
-
-parser.add_argument('--loss_combination', type=str, default='att_test_')
+parser.add_argument('--loss_combination', type=str, default='sL1+gan+KL')
 parser.add_argument('--gpu', type=int, default=0)
-parser.add_argument('--model', type=str, default='cnn_1_100.pkl')
 args = parser.parse_args()
 
 
@@ -41,7 +38,6 @@ except OSError:
 
 cuda.set_device(args.gpu)
 print("Running on GPU : ", args.gpu)
-
 input_dict = prepare_data()
 emb_file = os.path.join('./data', 'Color-Hex-vf.pth')
 

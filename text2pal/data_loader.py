@@ -16,13 +16,14 @@ class Dataset(data.Dataset):
         words_index = []
         for index, palette_name in enumerate(self.src_seqs):
             temp = [0] * input_dict.max_len
+
             for i, word in enumerate(palette_name):
                 temp[i] = input_dict.word2index[word]
             words_index.append(temp)
         self.src_seqs = torch.LongTensor(words_index)
 
         palette_list = []
-        for palettes in self.trg_seqs:
+        for index, palettes in enumerate(self.trg_seqs):
             temp = []
             for palette in palettes:
                 rgb = np.array([palette[0], palette[1], palette[2]]) / 255.0
