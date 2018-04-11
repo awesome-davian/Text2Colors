@@ -45,6 +45,12 @@ Statistics and samples of PAT dataset: (a) the number of data items with respect
 
 &nbsp;
 
+## Results
+### Text-to-Palette Generation Networks (TPN)
+<p align="center"><img width="100%" src="PNG/result1.PNG" /></p>
+
+### Palette-Based Colorization Networks (PCN)
+<p align="center"><img width="100%" src="PNG/result2.PNG" /></p>
 
 ## Prerequisites
 * [Python 3.5+](https://www.continuum.io/downloads)
