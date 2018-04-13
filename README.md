@@ -1,14 +1,14 @@
 <p align="center"><img width="40%" src="PNG/logo3.PNG" /></p>
 
 --------------------------------------------------------------------------------
-This repository provides a PyTorch implementation of [Text2Colors](아카이브주소). Text2Colors is capable of producing plausible colors (or color palette) given variable length of text input, and colorize a grayscale image based on the colors.
+This repository provides a PyTorch implementation of [Text2Colors](https://arxiv.org/abs/1804.04128). Text2Colors is capable of producing plausible colors (or color palette) given variable length of text input, and colorize a grayscale image based on the colors.
 
 <p align="center"><img width="100%" src="PNG/main.PNG" /></p>
 
 &nbsp;
 
 ## Paper
-[Text2Colors: Guiding Image Colorization through Text-Driven Palette Generation](아카이브주소) <br/>
+[Text2Colors: Guiding Image Colorization through Text-Driven Palette Generation](https://arxiv.org/abs/1804.04128) <br/>
 [Wonwoong Cho*<sup>1</sup>](https://github.com/wonwoongJo), [Hyojin Bahng*<sup>1</sup>](https://github.com/hjbahng), [David K. Park*<sup>1</sup>](https://github.com/heykeetae), [Seungjoo Yoo*<sup>1</sup>](https://github.com/sjooyoo), [Ziming Wu<sup>2</sup>](https://github.com/jimmy-ng), [Xiaojuan Ma<sup>2</sup>](https://www.cse.ust.hk/~mxj/), and [Jaegul Choo<sup>1</sup>](https://sites.google.com/site/jaegulchoo/)<br/>
 ***These authors contributed equally and are presented in random order.**<br/>
 &nbsp;&nbsp; **<sup>1</sup>Korea University &nbsp;&nbsp;&nbsp; <sup>2</sup>Hong Kong University of Science and Technology**
@@ -37,7 +37,7 @@ We open our manually curated dataset named Palette-and-Text(PAT). PAT contains 1
 Statistics and samples of PAT dataset: (a) the number of data items with respect to their text lengths. On the right are examples that show diverse textpalette pairs in PAT. Those text descriptions matching with their palettes include (b) direct color names, (c) texts with a relatively low level of semantic relations to colors, (d) those with a high-level semantic context. </br>
  </br>
 
-**For the use of PAT dataset for your research, please cite our [paper](아카이브주소).**
+**For the use of PAT dataset for your research, please cite our [paper](https://arxiv.org/abs/1804.04128).**
 ```
  (bibtex)
 ```
@@ -87,7 +87,7 @@ $ python train_pal2color.py
 *Wah, Catherine, et al. "The caltech-ucsd birds-200-2011 dataset." (2011).
 
 ## Citation
-If this work is useful for your research, please cite our [paper](아카이브주소).
+If this work is useful for your research, please cite our [paper](https://arxiv.org/abs/1804.04128).
 ```
  (bibtex)
 ```
