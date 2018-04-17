@@ -39,7 +39,12 @@ Statistics and samples of PAT dataset: (a) the number of data items with respect
 
 **For the use of PAT dataset for your research, please cite our [paper](https://arxiv.org/abs/1804.04128).**
 ```
- (bibtex)
+@article{cho2018text2colors,
+  title={Text2Colors: Guiding Image Colorization through Text-Driven Palette Generation},
+  author={Cho, Wonwoong and Bahng, Hyojin and Park, David K and Yoo, Seungjoo and Wu, Ziming and Ma, Xiaojuan and Choo, Jaegul},
+  journal={arXiv preprint arXiv:1804.04128},
+  year={2018}
+}
 ```
 &nbsp;
 
@@ -89,7 +94,12 @@ $ python train_pal2color.py
 ## Citation
 If this work is useful for your research, please cite our [paper](https://arxiv.org/abs/1804.04128).
 ```
- (bibtex)
+@article{cho2018text2colors,
+  title={Text2Colors: Guiding Image Colorization through Text-Driven Palette Generation},
+  author={Cho, Wonwoong and Bahng, Hyojin and Park, David K and Yoo, Seungjoo and Wu, Ziming and Ma, Xiaojuan and Choo, Jaegul},
+  journal={arXiv preprint arXiv:1804.04128},
+  year={2018}
+}
 ```
 &nbsp;
 
