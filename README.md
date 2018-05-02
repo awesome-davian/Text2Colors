@@ -9,7 +9,7 @@ This repository provides a PyTorch implementation of [Text2Colors](https://arxiv
 
 ## Paper
 [Text2Colors: Guiding Image Colorization through Text-Driven Palette Generation](https://arxiv.org/abs/1804.04128) <br/>
-[Wonwoong Cho*<sup>1</sup>](https://github.com/wonwoongJo), [Hyojin Bahng*<sup>1</sup>](https://github.com/hjbahng), [David K. Park*<sup>1</sup>](https://github.com/heykeetae), [Seungjoo Yoo*<sup>1</sup>](https://github.com/sjooyoo), [Ziming Wu<sup>2</sup>](https://github.com/jimmy-ng), [Xiaojuan Ma<sup>2</sup>](https://www.cse.ust.hk/~mxj/), and [Jaegul Choo<sup>1</sup>](https://sites.google.com/site/jaegulchoo/)<br/>
+[Wonwoong Cho*<sup>1</sup>](https://github.com/wonwoongJo), [Hyojin Bahng*<sup>1</sup>](https://github.com/hjbahng), [David Keetae Park*<sup>1</sup>](https://github.com/heykeetae), [Seungjoo Yoo*<sup>1</sup>](https://github.com/sjooyoo), [Ziming Wu<sup>2</sup>](https://github.com/jimmy-ng), [Xiaojuan Ma<sup>2</sup>](https://www.cse.ust.hk/~mxj/), and [Jaegul Choo<sup>1</sup>](https://sites.google.com/site/jaegulchoo/)<br/>
 ***These authors contributed equally and are presented in random order.**<br/>
 &nbsp;&nbsp; **<sup>1</sup>Korea University &nbsp;&nbsp;&nbsp; <sup>2</sup>Hong Kong University of Science and Technology**
 
