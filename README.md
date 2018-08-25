@@ -1,16 +1,16 @@
 <p align="center"><img width="40%" src="PNG/logo3.PNG" /></p>
 
 --------------------------------------------------------------------------------
-This repository provides a PyTorch implementation of [Text2Colors](https://arxiv.org/abs/1804.04128). Text2Colors is capable of producing plausible colors (or color palette) given variable length of text input, and colorize a grayscale image based on the colors.
+This repository provides a PyTorch implementation of [Text2Colors](https://arxiv.org/abs/1804.04128). Text2Colors is capable of producing plausible colors (or color palette) given variable length of text input, and colorize a grayscale image based on the generated color palettes.
 
 <p align="center"><img width="100%" src="PNG/main.PNG" /></p>
 
 &nbsp;
 
 ## Paper
-[Text2Colors: Guiding Image Colorization through Text-Driven Palette Generation](https://arxiv.org/abs/1804.04128) <br/>
-[Wonwoong Cho*<sup>1</sup>](https://github.com/wonwoongJo), [Hyojin Bahng*<sup>1</sup>](https://github.com/hjbahng), [David Keetae Park*<sup>1</sup>](https://github.com/heykeetae), [Seungjoo Yoo*<sup>1</sup>](https://github.com/sjooyoo), [Ziming Wu<sup>2</sup>](https://github.com/jimmy-ng), [Xiaojuan Ma<sup>2</sup>](https://www.cse.ust.hk/~mxj/), and [Jaegul Choo<sup>1</sup>](https://sites.google.com/site/jaegulchoo/)<br/>
-***These authors contributed equally and are presented in random order.**<br/>
+[Coloring with Words: Guiding Image Colorization through Text-Driven Palette Generation](https://arxiv.org/abs/1804.04128) <br/>
+[Hyojin Bahng*<sup>1</sup>](https://github.com/hjbahng), [Seungjoo Yoo*<sup>1</sup>](https://github.com/sjooyoo), [Wonwoong Cho*<sup>1</sup>](https://github.com/wonwoongJo), [David Keetae Park<sup>1</sup>](https://github.com/heykeetae), [Ziming Wu<sup>2</sup>](https://github.com/jimmy-ng), [Xiaojuan Ma<sup>2</sup>](https://www.cse.ust.hk/~mxj/), and [Jaegul Choo<sup>1</sup>](https://sites.google.com/site/jaegulchoo/)<br/>
+***These authors contributed equally.**<br/>
 &nbsp;&nbsp; **<sup>1</sup>Korea University &nbsp;&nbsp;&nbsp; <sup>2</sup>Hong Kong University of Science and Technology**
 
 &nbsp;
@@ -38,28 +38,16 @@ Statistics and samples of PAT dataset: (a) the number of data items with respect
  </br>
 
 **For the use of PAT dataset for your research, please cite our [paper](https://arxiv.org/abs/1804.04128).**
-```
-@article{cho2018text2colors,
-  title={Text2Colors: Guiding Image Colorization through Text-Driven Palette Generation},
-  author={Cho, Wonwoong and Bahng, Hyojin and Park, David K and Yoo, Seungjoo and Wu, Ziming and Ma, Xiaojuan and Choo, Jaegul},
-  journal={arXiv preprint arXiv:1804.04128},
-  year={2018}
-}
-```
-&nbsp;
 
 &nbsp;
 
 ## Results
-### Text-to-Palette Generation Networks (TPN)
 <p align="center"><img width="100%" src="PNG/test_palettes.png" /></p>
-
-### Palette-Based Colorization Networks (PCN)
 <p align="center"><img width="100%" src="PNG/qualitative.png" /></p>
 
 ## Prerequisites
-* [Python 3.5+](https://www.continuum.io/downloads)
-* [PyTorch 0.3.1](http://pytorch.org/)
+* [Python 3.6+](https://www.continuum.io/downloads)
+* [PyTorch 0.4.1](http://pytorch.org/)
 * [Scikit-Image 0.13.1](http://scikit-image.org/)
 
 &nbsp;
@@ -81,26 +69,32 @@ $ bash install_pre.sh
 ##### (i) Training Text-to-Palette Generation Networks (TPN) with PAT data
 
 ```bash
-$ python train_text2pal.py
+$ python main.py --mode train_TPN
 ```
 
 ##### (ii) Training Palette-Based Colorization Networks (PCN) with CUB-200-2011* data
 
 ```bash
-$ python train_pal2color.py
+$ python main.py --mode train_PCN
 ```
 *Wah, Catherine, et al. "The caltech-ucsd birds-200-2011 dataset." (2011).
 
+#### 4. Test
+##### (i) Testing TPN
+
+```bash
+$ python main.py --mode test_TPN
+```
+
+##### (ii) Testing Text2Colors
+
+```bash
+$ python main.py --mode test_text2colors
+```
+
 ## Citation
 If this work is useful for your research, please cite our [paper](https://arxiv.org/abs/1804.04128).
-```
-@article{cho2018text2colors,
-  title={Text2Colors: Guiding Image Colorization through Text-Driven Palette Generation},
-  author={Cho, Wonwoong and Bahng, Hyojin and Park, David K and Yoo, Seungjoo and Wu, Ziming and Ma, Xiaojuan and Choo, Jaegul},
-  journal={arXiv preprint arXiv:1804.04128},
-  year={2018}
-}
-```
+
 &nbsp;
 
 
