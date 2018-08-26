@@ -10,8 +10,9 @@ This repository provides a PyTorch implementation of [Text2Colors](https://arxiv
 ## Paper
 [Coloring with Words: Guiding Image Colorization through Text-based Palette Generation](https://arxiv.org/abs/1804.04128) <br/>
 [Hyojin Bahng*<sup>1</sup>](https://github.com/hjbahng), [Seungjoo Yoo*<sup>1</sup>](https://github.com/sjooyoo), [Wonwoong Cho*<sup>1</sup>](https://github.com/wonwoongJo), [David Keetae Park<sup>1</sup>](https://github.com/heykeetae), [Ziming Wu<sup>2</sup>](https://github.com/jimmy-ng), [Xiaojuan Ma<sup>2</sup>](https://www.cse.ust.hk/~mxj/), and [Jaegul Choo<sup>1</sup>](https://sites.google.com/site/jaegulchoo/)<br/>
-***These authors contributed equally.**<br/>
-&nbsp;&nbsp; **<sup>1</sup>Korea University &nbsp;&nbsp;&nbsp; <sup>2</sup>Hong Kong University of Science and Technology**
+<br/>
+<sup>1</sup>Korea University &nbsp;&nbsp; <sup>2</sup>Hong Kong University of Science and Technology
+ECCV, 2018. (* equal contributions)
 
 &nbsp;
 &nbsp;
